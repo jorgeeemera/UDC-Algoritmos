@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ejecutables y Binarios
+*.exe
+*.o
+*.out
+*.app
+*.so
+*.dylib
+a.out
+
+# IDEs (VS Code, JetBrains/CLion)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Carpetas de compilación
+build/
+bin/
+obj/
