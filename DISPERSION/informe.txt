@@ -1,0 +1,217 @@
+Práctica 3 - Diccionario de datos
+
+Alumno 1: Adrián Novio Vilariño
+Alumno 2: Pablo Araújo Rodríguez
+Alumno 3: Jorge Mera Hermida
+
+La práctica de este estudio se enfoca en el desarrollo de un programa 
+para determinar de forma eficiente cuál es el k-ésimo mayor número 
+de un vector de enteros, para un valor de k dado. Además de calcular la 
+complejidad computacional de obtener ese k-ésimo mayor número 
+en dos diferentes casos.
+
+   1. Características de la máquina:
+        - Marca: MacBook Pro 14"
+        - OS:  macOS Sequoia 15.0            
+        - CPU: Apple Silicon M1
+        - Memoria: 16GB
+        - Compilador: Apple clang version 16.0.0
+     
+   2. Unidades de medida:
+      - Los tiempos se expresarán en μs.
+   
+   3. Método:
+      - Para realizar el análisis, se llevaron a cabo pruebas de rendimiento, 
+      con entradas (n) de tamaño creciente: 
+      1000, 2000, 4000, 8000, 16000, 32000, 64000 y 128000 elementos. 
+      
+      Se midió el tiempo de ejecución con dos casos diferentes:
+         -> k = 5
+         -> k = n/3, siendo n el tamaño del vector
+
+      Se usarán 2 cotas (subestimada y sobreestimada) para afianzar lo máximo
+      posible los resultados. En caso de que el tiempo de ejecución sea muy pequeño, 
+      es decir, tiempo < 500μs (será marcado con (*) al principio
+      de la línea), se calculará una media de (1000) ejecuciones 
+      del algoritmo.
+
+      u(n) corresponde a la cota subestimada, o(n) a la sobreestimada, y 
+      a(n) a la cota ajustada. Cabe destacar que cada cota estará citada
+      debajo de su respectiva tabla.
+
+   4.Resultados:
+ 
+* Dispersión cerrada lineal con dispersionA *
+Insertando 19062 elementos... Número total de colisiones: 172623183
+Buscando n elementos...
+
+           n           t(n)            t(n)/u(n)     t(n)/a(n)        t(n)/o(n)
+          125        4032.000         84.7212809    32.2560000        6.6805932
+          250        8362.000        100.9155651    33.4480000        6.0578170
+          500       16980.000        117.6959944    33.9600000        5.4645441
+         1000       32940.000        131.1365020    32.9400000        4.7685534
+         2000       68188.000        155.9135844    34.0940000        4.4855200
+         4000      133197.000        174.9228120    33.2992500        4.0148361
+         8000      267825.000        202.0129097    33.4781250        3.7250909
+        16000      535341.000        231.9180334    33.4588125        3.4563661
+                                                  Cte = 33.36677
+   Cota subestimada: u(n) = n^0.8
+   Cota exacta: a(n) = n
+   Cota sobrestimada: o(n) = n*log(n)
+
+---------------------------------------------------------------------------------
+
+* Dispersión cerrada cuadrática con dispersionA *
+Insertando 19062 elementos... Número total de colisiones: 2106581
+Buscando n elementos...
+
+           n           t(n)            t(n)/u(n)     t(n)/a(n)        t(n)/o(n)
+(*)       125          65.138          0.8445306     0.5211040        0.3215388 #A1
+(*)       250         117.363          0.8154272     0.4694520        0.2702696 #A2
+(*)       500         231.327          0.8612978     0.4626540        0.2485188
+(*)      1000         460.025          0.9178705     0.4600250        0.2305587
+         2000         915.000          0.9783497     0.4575000        0.2139381
+         4000        1801.000          1.0319525     0.4502500        0.1964481
+         8000        3573.000          1.0971147     0.4466250        0.1818168
+        16000        7139.000          1.1747066     0.4461875        0.1694749
+                                                  Cte = 0.46422
+   Cota subestimada: u(n) = n^0.95
+   Cota exacta: a(n) = n
+   Cota sobrestimada: o(n) = n^1.1
+
+---------------------------------------------------------------------------------
+
+* Dispersión cerrada doble con dispersionA *
+Insertando 19062 elementos... Número total de colisiones: 1451531
+Buscando n elementos...
+
+           n           t(n)            t(n)/u(n)     t(n)/a(n)        t(n)/o(n)
+(*)       125          11.888          0.2497933     0.1210722        0.0586824
+(*)       250          22.082          0.2664934     0.1164114        0.0508516
+(*)       500          43.362          0.3005615     0.1183281        0.0465846
+(*)      1000          81.942          0.3262170     0.1157462        0.0410683
+(*)      2000         163.540          0.3739383     0.1195764        0.0382376
+(*)      4000         323.478          0.4248120     0.1224300        0.0352841
+         8000         681.000          0.5136593     0.1334171        0.0346536
+        16000        1301.000          0.5636134     0.1319360        0.0308848
+                                                  Cte = 0.12236
+   Cota subestimada: u(n) = n^0.8
+   Cota exacta: a(n) = n^0.95
+   Cota sobrestimada: o(n) = n^1.1
+
+---------------------------------------------------------------------------------
+
+* Dispersión cerrada lineal con dispersionB *
+Insertando 19062 elementos... Número total de colisiones: 16965
+Buscando n elementos...
+
+           n           t(n)            t(n)/u(n)     t(n)/a(n)        t(n)/o(n)
+(*)       125          11.023          0.1429160     0.0881840        0.0182639 #A1
+(*)       250          22.296          0.1549105     0.0811840        0.0161522
+(*)       500          40.506          0.1508156     0.0810120        0.0130357 #A2
+(*)      1000          81.917          0.1634459     0.0819170        0.0118587
+(*)      2000         160.774          0.1719051     0.0803870        0.0105760
+(*)      4000         317.654          0.1820121     0.0794135        0.0095748
+         8000         653.000          0.2005082     0.0816250        0.0090824
+        16000        1277.000          0.2101275     0.0798125        0.0082448
+                                                  Cte = 0.08169
+   Cota subestimada: u(n) = n^0.9
+   Cota exacta: a(n) = n^1.1
+   Cota sobrestimada: o(n) = n*log(n)
+
+---------------------------------------------------------------------------------
+
+* Dispersión cerrada cuadrática con dispersionB *
+Insertando 19062 elementos... Número total de colisiones: 13366
+Buscando n elementos...
+
+           n           t(n)            t(n)/u(n)     t(n)/a(n)        t(n)/o(n)
+(*)       125          11.346          0.2384047     0.0907680        0.0187991 #A1
+(*)       250          21.144          0.2551732     0.0805760        0.0153177
+(*)       500          41.067          0.2846538     0.0821340        0.0132163
+(*)      1000          80.953          0.3222797     0.0809530        0.0117191
+(*)      2000         154.807          0.3539701     0.0774035        0.0101835
+(*)      4000         308.415          0.4050303     0.0771037        0.0092963
+         8000         627.000          0.4729286     0.0783750        0.0087207
+        16000        1254.000          0.5432523     0.0783750        0.0080963
+                                                  Cte = 0.07927
+   Cota subestimada: u(n) = n^0.8
+   Cota exacta: a(n) = n
+   Cota sobrestimada: o(n) = n*log(n)
+
+---------------------------------------------------------------------------------
+
+* Dispersión cerrada doble con dispersionB *
+Insertando 19062 elementos... Número total de colisiones: 19401
+Buscando n elementos...
+
+           n           t(n)            t(n)/u(n)     t(n)/a(n)        t(n)/o(n)
+(*)       125          11.135          0.2339711     0.0890800        0.0339155 #A1
+(*)       250          20.574          0.2482943     0.0822960        0.0272766
+(*)       500          39.180          0.2715741     0.0783600        0.0226100
+(*)      1000          77.387          0.3080832     0.0773870        0.0194387
+(*)      2000         161.834          0.3700375     0.0809170        0.0176943
+(*)      4000         307.341          0.4036198     0.0768353        0.0146268
+         8000         639.000          0.4819798     0.0798750        0.0132371
+        16000        1241.000          0.5376205     0.0775625        0.0111899
+                                                  Cte = 0.07903
+   Cota subestimada: u(n) = n^0.8
+   Cota exacta: a(n) = n
+   Cota sobrestimada: o(n) = n^1.2
+
+   Anomalías:
+   - #A1: En la cota ajustada se esperaban valores ligeramente más bajos de los obtenidos.
+   - #A2: En la cota subestimada se esperaban valores ligeramente más altos de los obtenidos. 
+
+   5. Conclusiones:
+
+   Sobre las dispersiones:
+   - La función de dispersión B se muestra considerablemente más eficiente que la
+     dispersión A en términos de velocidad y reducción de colisiones. Con la dispersión B, 
+     el número de colisiones es notablemente menor, lo que optimiza los tiempos de búsqueda
+     y mejora el rendimiento general del programa.
+
+   - Con una dispersión menos eficiente como la A, es esencial contar con una buena función 
+     de exploración para mitigar el impacto de las colisiones y optimizar el tiempo de ejecución. 
+     Sin embargo, en el caso de una función de dispersión bien optimizada como la B, 
+     la elección de la función de exploración tiene un impacto menor en los tiempos, 
+     dado que la baja cantidad de colisiones generadas reduce la dependencia de la técnica de 
+     exploración para obtener un buen rendimiento. 
+
+   Sobre los diccionarios de datos:
+   - Comparando los tres diccionarios de datos, la dispersión cerrada doble sobresale como la 
+     opción más eficaz. Este método logra el menor número de colisiones y mantiene tiempos de 
+     búsqueda muy eficientes.
+
+   - La dispersión cerrada cuadrática también es una opción eficiente y presenta una mejora 
+     significativa en el manejo de colisiones comparada con el método lineal. 
+
+   - Finalmente, el diccionario de datos con dispersión lineal resulta ser el menos efectivo
+     en términos de colisiones y tiempos de búsqueda, especialmente al usar la dispersión A, 
+     donde el número de colisiones se incrementa considerablemente.
+
+En conclusión, la función de dispersión B combinada con el diccionario de datos con 
+dispersión doble es la implementación óptima para realizar búsquedas eficientes y manejar 
+grandes volúmenes de datos, destacándose por su menor tasa de colisiones y tiempos más rápidos 
+en comparación con las demás alternativas.
+
+
+Conclusiones:
+	1.	Calcular el k-ésimo mayor número resulta ser mucho más eficiente cuando k = 5 en comparación con k = n/3. 
+   Esto se debe a que, en el caso de k = 5, el algoritmo únicamente necesita realizar una cantidad limitada de 
+   operaciones para encontrar el número deseado. En cambio, cuando k = n/3 es proporcional al tamaño del vector,
+   se incrementa el número de elementos que deben ser evaluados, lo que aumenta significativamente el tiempo de ejecución.
+
+	2.	En ambos casos analizados, el tiempo necesario para obtener el k-ésimo mayor número está directamente 
+   relacionado con el tamaño del vector. Los resultados demuestran que, para vectores pequeños, 
+   el algoritmo es considerablemente más eficiente, ya que el espacio de búsqueda es menor y la cantidad de 
+   operaciones requeridas es más limitada. A medida que n crece, el tiempo de ejecución aumenta de manera notable, 
+   especialmente en el caso de k = n/3.
+	
+   3.	Las mediciones realizadas indican que el comportamiento del algoritmo para k = 5 es cercano a una complejidad lineal, 
+   lo que lo convierte en una solución eficiente para valores pequeños de n. Por otro lado, cuando k = n/3, 
+   el crecimiento del tiempo de ejecución sugiere una complejidad más alta, acercándose a un comportamiento 
+   cuadrático en los valores del vector analizados. Este patrón se debe a que el algoritmo necesita 
+   explorar una fracción significativa del vector, lo que incrementa sustancialmente la cantidad de operaciones realizadas.
+
+En conclusión, el análisis resalta la eficiencia del algoritmo para valores pequeños de ￼, mientras que para casos donde ￼ depende proporcionalmente del tamaño del vector, sería necesario considerar optimizaciones para manejar los tiempos de ejecución más altos de manera más eficiente.

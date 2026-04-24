@@ -1,0 +1,95 @@
+Práctica 1 - Fibonacci
+
+Alumno 1: Adrián Novio Vilariño
+Alumno 2: Pablo Araújo Rodríguez
+Alumno 3: Jorge Mera Hermida
+
+Este estudio tiene como objetivo analizar empíricamente la eficiencia
+de tres algoritmos diferentes para calcular la sucesión de Fibonacci.
+Para validar este análisis, se realizarán mediciones del tiempo de 
+ejecución de cada algoritmo y se compararán con las complejidades 
+teóricas esperadas.
+
+   1. Características de la máquina:
+        - Marca: MacBook Pro 14"
+        - OS:  macOS Sequoia 15.0            
+        - CPU: Apple Silicon M1
+        - Memoria: 16GB
+        - Compilador: Apple clang version 16.0.0
+     
+   2. Unidades de medida:
+      - Los tiempos se expresarán en μs.
+   
+   3. Método:
+      - Se realizaron tests para analizar la eficiencia de tres algoritmos 
+      que calculan la sucesión de Fibonacci. Cada test mide el tiempo de 
+      ejecución de estos algoritmos sobre distintos valores de n, 
+      comparando los tiempos con sus complejidades teóricas.
+
+      Los tamaños de entrada (n) seleccionados para las pruebas varían
+      en potencias de 2 para el primer algoritmo (fib1), y en potencias 
+      de 10 para el segundo (fib2) y el tercero (fib3). 
+      Los valores de n utilizados fueron:
+      - Para fib1: 2, 4, 8, 16, 32.
+      - Para fib2 y fib3: 1000, 10000, 100000, 1000000, 10000000.
+
+      Se usarán 2 cotas (subestimada y sobreestimada) para afianzar lo máximo
+      posible los resultados. En caso de que el tiempo de ejecución sea muy pequeño, 
+      es decir, k < 500μs, se calculará una media de k ejecuciones del algoritmo.
+
+      Ya que normalmente la primera medición suele ser errónea, se ha decidido que,
+      en cada ejecución, se generen 5 veces cada medición de tiempo para cada algoritmo,
+      con la intención de mejorar la posibilidad de mediciones sin anomalías. 
+
+   4.Resultados:
+   Medición de tiempo para fib1:
+             n              t(n)         t(n)/(1.1^n)    t(n)/(1+sqrt(5)/2)^n      t(n)/2^n
+(*)          2             0.0060        0.0049586777       0.002291796068       0.001500000000
+(*)          4             0.0210        0.0143432826       0.003063858709       0.001312500000
+(*)          8             0.1610        0.0751076882       0.003427084037       0.000628906250
+(*)         16             7.8230        1.7025127293       0.003544631448       0.000119369507
+            32         17212.0000      815.2023300989       0.003533676997       0.000004007481
+                                                            Cte = 0.003172
+   Cota subestimada: t/1.1^n
+   Cota exacta: t/(1+sqrt(5))^n
+   Cota sobrestimada: t/2^n
+
+
+Medición de tiempo para fib2:
+            n               t(n)        t(n)/(n^0.8)            t(n)/n            t(n)/nlog(n)
+(*)       1000             3.5890      0.014288066351       0.003589000000       0.000519560965
+(*)      10000            29.1830      0.018413228184       0.002918300000       0.000316850397
+(*)     100000           224.3850      0.022438500000       0.002243850000       0.000194898335
+       1000000          2311.0000      0.036626881678       0.002311000000       0.000167275758
+      10000000         22614.0000      0.056803799762       0.002261400000       0.000140301934
+                                                            Cte = 0.002665
+   Cota subestimada: t/n^0.8
+   Cota exacta: t/n
+   Cota sobrestimada: t/nlog(n)
+
+
+Medición de tiempo para fib3:
+            n              t(n)       t(n)/sqrt(log(n))      t(n)/log(n)           t(n)/n^0.5
+(*)       1000             0.0280      0.010653432527       0.004053415164       0.000885437745
+(*)      10000             0.0370      0.012191689236       0.004017223958       0.000370000000
+(*)     100000             0.0470      0.013851761697       0.004082368130       0.000148627050
+(*)    1000000             0.0540      0.014528149167       0.003908650337       0.000054000000
+(*)   10000000             0.0640      0.015941277050       0.003970692406       0.000020238577
+                                                            Cte = 0.004006
+   Cota subestimada: t/sqrt(log(n))
+   Cota exacta: t/log(n)
+   Cota sobrestimada: t/n^0.5
+
+
+   5. Conclusiones:
+      - Mientras que fib1 es aceptable para valores pequeños de n, se vuelve 
+      rápidamente ineficiente para n grandes.
+
+      - fib2 y fib3 son significativamente más eficientes que fib1 para valores
+      de n más elevados.
+
+      - Destacándose fib3 como la mejor opción para casos en los que se requieren
+      cálculos eficientes con entradas de gran magnitud.
+
+   En conclusión, el análisis muestra la importancia de elegir algoritmos eficientes, 
+   especialmente cuando se enfrentan problemas de gran escala.
